@@ -1,0 +1,88 @@
+@import 'mixins';
+
+.mk-product-item {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-radius: 3px;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  position: relative;
+  border-bottom: 1px solid #f1f3f3;
+  padding: 20px 0 20px 20px;
+  
+  &-image-wrapper {
+    width: 144px;
+    height: 81px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .mk-product-item-time {
+    padding: 0.125rem 0.5rem;
+    background-color: rgba(0,0,0,.65);
+    border-radius: 0.25rem;
+    font-size: .75rem;
+    color: #fff;
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.25rem;
+  }
+
+  .mk-product-item-content-wrapper {
+    overflow: hidden;
+    flex: 1;
+    .mk-product-item-content-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: rgba(0,0,0,.85);
+      word-break: keep-all;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 1rem;
+    }
+    .mk-product-item-content {
+      font-size: 0.8rem;
+      height: 2rem;
+      line-height: 2rem;
+      color: rgba(0,0,0,.45);
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 1rem;
+    }
+  }
+}
+
+.tag-lg {
+  @include tag-size($tag-padding-y-lg, $tag-padding-x-lg, $tag-font-size-lg);
+}
+.tag-sm {
+  @include tag-size($tag-padding-y-sm, $tag-padding-x-sm, $tag-font-size-sm);
+}
+
+@each $key, $val in $theme-colors {
+  .tag-#{$key} {
+    color: $val;
+    background-color: rgba($val, .1);
+    border: 1px solid rgba($val, .2);
+
+    .mk-icon {
+      &:hover {
+        color: darken($val, 10%);
+      }
+    }
+  }
+}
